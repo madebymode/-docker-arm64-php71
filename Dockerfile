@@ -13,9 +13,7 @@ RUN apk add --no-cache --virtual .build-deps  \
     libxml2-dev \
     bzip2-dev \
     curl-dev \
-    libmcrypt-dev \
-    libmcrypt \
-    zip
+    libmcrypt-dev 
 
 # Add App Dependencies
 RUN apk add --update --no-cache \
@@ -28,7 +26,9 @@ RUN apk add --update --no-cache \
     mysql-client \
     libzip-dev \
     bash \
-    shared-mime-info
+    shared-mime-info \
+    libmcrypt \
+    zip
 
 # Configure & Install Extension
 RUN docker-php-ext-configure gd --with-jpeg=/usr/include/ --with-freetype=/usr/include/ && \
