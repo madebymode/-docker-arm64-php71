@@ -24,7 +24,8 @@ RUN apk add --update --no-cache \
     freetype-dev \
     mysql-client \
     libzip-dev \
-    bash
+    bash \
+    shared-mime-info
 
 # Configure & Install Extension
 RUN docker-php-ext-configure gd --with-jpeg=/usr/include/ --with-freetype=/usr/include/ && \
@@ -42,7 +43,10 @@ RUN docker-php-ext-configure gd --with-jpeg=/usr/include/ --with-freetype=/usr/i
     pcntl \
     bcmath \
     zip \
-    && docker-php-ext-enable mysqli pdo_mysql
+    fileinfo
+
+
+RUN ln -sf "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/conf.d/php.ini"
 
 # Add Composer
 RUN curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
