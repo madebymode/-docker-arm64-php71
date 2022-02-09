@@ -13,6 +13,8 @@ RUN apk add --no-cache --virtual .build-deps  \
     libxml2-dev \
     bzip2-dev \
     curl-dev \
+    libmcrypt-dev \
+    libmcrypt \
     zip
 
 # Add App Dependencies
@@ -45,13 +47,16 @@ RUN docker-php-ext-configure gd --with-jpeg=/usr/include/ --with-freetype=/usr/i
     bcmath \
     zip \
     fileinfo \ 
-    curl 
+    curl \
+    mcrypt
 
 
 RUN ln -sf "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/conf.d/php.ini"
 
-# Add Composer
-RUN curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
+#composer 1.10
+RUN curl -sS https://getcomposer.org/installer | php -- --version=1.10.22 --install-dir=/usr/local/bin --filename=composer
+#composer 2
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer2
 ENV COMPOSER_ALLOW_SUPERUSER=1
 ENV PATH="./vendor/bin:$PATH"
 
