@@ -12,6 +12,7 @@ RUN apk add --no-cache --virtual .build-deps  \
     libpng-dev \
     libxml2-dev \
     bzip2-dev \
+    curl-dev \
     zip
 
 # Add App Dependencies
@@ -43,7 +44,8 @@ RUN docker-php-ext-configure gd --with-jpeg=/usr/include/ --with-freetype=/usr/i
     pcntl \
     bcmath \
     zip \
-    fileinfo
+    fileinfo \ 
+    curl 
 
 
 RUN ln -sf "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/conf.d/php.ini"
