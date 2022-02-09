@@ -32,7 +32,7 @@ RUN apk add --update --no-cache \
 
 # Configure & Install Extension
 RUN docker-php-ext-configure gd --with-jpeg=/usr/include/ --with-freetype=/usr/include/ && \
-
+    docker-php-ext-configure mcrypt && \
     docker-php-ext-install \
     mysqli \
     pdo \
