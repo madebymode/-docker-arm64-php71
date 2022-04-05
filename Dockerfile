@@ -14,7 +14,7 @@ RUN apk add --no-cache --virtual .build-deps  \
     bzip2-dev \
     curl-dev \
     libmcrypt-dev 
-
+    
 # Add App Dependencies
 RUN apk add --update --no-cache \
     jpegoptim \
@@ -28,7 +28,10 @@ RUN apk add --update --no-cache \
     bash \
     shared-mime-info \
     libmcrypt \
-    zip
+    zip \
+    git \
+    curk \
+    wget 
 
 # Configure & Install Extension
 RUN docker-php-ext-configure gd --with-jpeg=/usr/include/ --with-freetype=/usr/include/ && \
