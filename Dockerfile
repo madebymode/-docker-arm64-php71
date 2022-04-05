@@ -30,7 +30,7 @@ RUN apk add --update --no-cache \
     libmcrypt \
     zip \
     git \
-    curk \
+    curl \
     wget 
 
 # Configure & Install Extension
